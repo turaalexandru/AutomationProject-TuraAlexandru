@@ -1,14 +1,17 @@
-package Tests;
+package tests;
 
-import HelperMethods.AlertMethod;
-import HelperMethods.ElementMethod;
-import HelperMethods.FrameMethod;
-import HelperMethods.PageMethods;
+import helperMethods.AlertMethod;
+import helperMethods.ElementMethod;
+import helperMethods.FrameMethod;
+import helperMethods.PageMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import pages.AlertWindowsPage;
+import pages.FramePage;
+import pages.HomePage;
 
 import java.time.Duration;
 
@@ -18,7 +21,7 @@ public class FrameTest {
 
     @Test
 
-    public void FrameTest(){
+    public void FrameTest() {
         //Deschidem un browser
         driver = new ChromeDriver();
 
@@ -39,6 +42,8 @@ public class FrameTest {
         ElementMethod elementMethod = new ElementMethod(driver);
         PageMethods pageMethods = new PageMethods(driver);
         FrameMethod frameMethod = new FrameMethod(driver);
+        HomePage homePage = new HomePage(driver);
+        homePage.navigateToAlertMenu();
 
         //facem un scroll la pagina pentru vizibilitate
         //JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -46,35 +51,15 @@ public class FrameTest {
         pageMethods.scrollPage(0, 350);
 
         //interactionam cu meniul/submeniul
+        homePage.navigateToAlertMenu();
 
-        WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        //alertMeniu.click();
-        elementMethod.clickElement(alertMeniu);
-
-        WebElement frameOptionMeniu = driver.findElement(By.xpath("//span[text()='Frames']"));
-        //alertsoptionMeniu.click();
-        elementMethod.clickElement(frameOptionMeniu);
+        AlertWindowsPage alertWindowsPage = new AlertWindowsPage(driver);
+        alertWindowsPage.navigateToFrameOptionMeniu();
 
         //ne mutam cu focusul pe un iframte
-        //driver.switchTo().frame("frame1");
-        frameMethod.switchtoFrame("frame1");
-
-        WebElement iFrameText = driver.findElement(By.id("sampleHeading"));
-        System.out.println(iFrameText.getText());
-
-        //ne intoarcem cu focusul la frame-ul default
-        //driver.switchTo().defaultContent();
-        frameMethod.defaultFrame();
-
-        //driver.switchTo().frame("frame2");
-        frameMethod.switchtoFrame("frame2");
-
-        WebElement iFrameText2 = driver.findElement(By.id("sampleHeading"));
-        System.out.println(iFrameText2.getText());
-
-        //ne intoarcem cu focusul la frame-ul default
-        //driver.switchTo().defaultContent();
-        frameMethod.defaultFrame();
+        FramePage framePage = new FramePage(driver);
+        framePage.interactWithBigIFrame();
+        framePage.interactWithSmallIFrame();
 
         WebElement nestedoptionMeniu = driver.findElement(By.xpath("//span[text()='Nested Frames']"));
         //alertsoptionMeniu.click();
@@ -91,7 +76,6 @@ public class FrameTest {
 
         WebElement text = driver.findElement(By.xpath("//p"));
         System.out.println(text.getText());
-
 
     }
 
