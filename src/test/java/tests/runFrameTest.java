@@ -12,10 +12,11 @@ import org.testng.annotations.Test;
 import pages.AlertWindowsPage;
 import pages.FramePage;
 import pages.HomePage;
+import pages.NestedFramePage;
 
 import java.time.Duration;
 
-public class FrameTest {
+public class runFrameTest {
 
     public WebDriver driver;
 
@@ -45,14 +46,6 @@ public class FrameTest {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAlertMenu();
 
-        //facem un scroll la pagina pentru vizibilitate
-        //JavascriptExecutor js = (JavascriptExecutor) driver;
-        //js.executeScript("window.scrollBy(0,350)", "");
-        pageMethods.scrollPage(0, 350);
-
-        //interactionam cu meniul/submeniul
-        homePage.navigateToAlertMenu();
-
         AlertWindowsPage alertWindowsPage = new AlertWindowsPage(driver);
         alertWindowsPage.navigateToFrameOptionMeniu();
 
@@ -60,22 +53,11 @@ public class FrameTest {
         FramePage framePage = new FramePage(driver);
         framePage.interactWithBigIFrame();
         framePage.interactWithSmallIFrame();
-
-        WebElement nestedoptionMeniu = driver.findElement(By.xpath("//span[text()='Nested Frames']"));
-        //alertsoptionMeniu.click();
-        elementMethod.clickElement(nestedoptionMeniu);
+        framePage.interactWithNestedOptionMeniu();
 
         //interactionam cu iframe in iframe
-
-        //driver.switchTo().frame("frame1");
-        frameMethod.switchtoFrame("frame1");
-
-        WebElement childFrame = driver.findElement(By.xpath("//iframe[@srcdoc='<p>Child Iframe</p>]/"));
-        //driver.switchTo().frame(childFrame);
-        frameMethod.switchtoFrameWE(childFrame);
-
-        WebElement text = driver.findElement(By.xpath("//p"));
-        System.out.println(text.getText());
+        NestedFramePage nestedFramePage = new NestedFramePage(driver);
+        nestedFramePage.interactWithChildFrame();
 
     }
 
