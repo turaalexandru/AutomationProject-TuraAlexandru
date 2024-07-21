@@ -1,27 +1,17 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.AlertWindowsPage;
 import pages.HomePage;
 import pages.WindowPages;
+import sharedData.SharedData;
 
-public class WindowTest {
-    public WebDriver driver;
+public class WindowTest extends SharedData {
+
 
     @Test
     public void AlertTest() {
 
-        //Deschidem un browser
-        driver = new ChromeDriver();
-
-        //deschidem un anumit URL
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in mod maximize
-
-        driver.manage().window().maximize();
 
         //definim un obiect de tipul homepage
 

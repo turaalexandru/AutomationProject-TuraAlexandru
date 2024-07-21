@@ -1,31 +1,19 @@
 package pages;
 
-import helperMethods.AlertMethod;
-import helperMethods.ElementMethod;
-import helperMethods.PageMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.io.File;
 import java.util.List;
 
-public class PracticeFormPage {
-    public WebDriver driver;
-    public ElementMethod elementMethods;
-    public PageMethods pageMethods;
-    public AlertMethod alertMethods;
+public class PracticeFormPage extends BasePage {
 
     public PracticeFormPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethod(driver);
-        pageMethods  = new PageMethods(driver);
-        alertMethods = new AlertMethod(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @FindBy(id = "firstName")
@@ -88,60 +76,61 @@ public class PracticeFormPage {
 
 
 
+
     public void fillEntireForm(String firstNameValue, String lastNameValue, String emailNameValue,
                                String genderValue, String mobileNumberValue, String daysOfBirthValue,
                                String subjectInputValue, String picturePathValue, String addressElementValue,
                                String stateInputValue, String cityInputValue, List<String> hobbiesValues){
-        elementMethods.fillElement(firstNameElement, firstNameValue);
-        elementMethods.fillElement(lastNameElement, lastNameValue);
-        elementMethods.fillElement(emailElement, emailNameValue);
+        elementMethod.fillElement(firstNameElement, firstNameValue);
+        elementMethod.fillElement(lastNameElement, lastNameValue);
+        elementMethod.fillElement(emailElement, emailNameValue);
         pageMethods.scrollPage(0, 350);
         switch (genderValue){
             case "Male":
-                elementMethods.clickElement(genderElements.get(0));
+                elementMethod.clickElement(genderElements.get(0));
                 break;
             case "Female":
-                elementMethods.clickElement(genderElements.get(1));
+                elementMethod.clickElement(genderElements.get(1));
                 break;
             case  "Other":
-                elementMethods.clickElement(genderElements.get(2));
+                elementMethod.clickElement(genderElements.get(2));
                 break;
         }
-        elementMethods.fillElement(mobileNumberElement, mobileNumberValue);
-        elementMethods.clickElement(dateOfBirth);
-        elementMethods.selectByTextElement(dateOfBirthMonthElement, "September");
-        elementMethods.selectByValue(yearOfBirth, "2024");
+        elementMethod.fillElement(mobileNumberElement, mobileNumberValue);
+        elementMethod.clickElement(dateOfBirth);
+        elementMethod.selectByTextElement(dateOfBirthMonthElement, "September");
+        elementMethod.selectByValue(yearOfBirth, "2024");
         for (Integer index = 0; index<daysOfBirthElements.size(); index++){
             if(daysOfBirthElements.get(index).getText().equals(daysOfBirthValue)){
-                elementMethods.clickElement(daysOfBirthElements.get(index));
+                elementMethod.clickElement(daysOfBirthElements.get(index));
                 break;
             }
         }
         pageMethods.scrollPage(0, 150);
-        elementMethods.fillElement(subjectInputElement, subjectInputValue);
-        elementMethods.pressElement(subjectInputElement, Keys.ENTER);
+        elementMethod.fillElement(subjectInputElement, subjectInputValue);
+        elementMethod.pressElement(subjectInputElement, Keys.ENTER);
         pageMethods.scrollPage(0, 350);
         for(Integer index = 0; index<hobbiesElements.size(); index++) {
             String hobbieText = hobbiesElements.get(index).getText();
             if(hobbiesValues.contains(hobbieText)){
-                elementMethods.clickJSElement(hobbiesElements.get(index));
+                elementMethod.clickJSElement(hobbiesElements.get(index));
             }
         }
         File file = new File("src/test/resources/" + picturePathValue);
         uploadPictureElement.sendKeys(file.getAbsolutePath());
 
-        elementMethods.fillElement(addressElement, addressElementValue);
+        elementMethod.fillElement(addressElement, addressElementValue);
 
         pageMethods.scrollPage(0, 350);
-        elementMethods.clickElement(stateElement);
+        elementMethod.clickElement(stateElement);
 
-        elementMethods.fillElement(stateInputElement, stateInputValue);
-        elementMethods.pressElement(stateInputElement, Keys.ENTER);
+        elementMethod.fillElement(stateInputElement, stateInputValue);
+        elementMethod.pressElement(stateInputElement, Keys.ENTER);
 
-        elementMethods.fillElement(cityInputElement, cityInputValue);
-        elementMethods.pressElement(cityInputElement, Keys.ENTER);
+        elementMethod.fillElement(cityInputElement, cityInputValue);
+        elementMethod.pressElement(cityInputElement, Keys.ENTER);
         pageMethods.scrollPage(0, 350);
-        elementMethods.clickJSElement(submitForm);
+        elementMethod.clickJSElement(submitForm);
     }
 
     public void validateEntireForm(String firstNameValue, String lastNameValue, String emailNameValue,
@@ -164,7 +153,7 @@ public class PracticeFormPage {
 
         WebElement closeElement = driver.findElement(By.id("closeLargeModal"));
         //js.executeScript("arguments[0].click;", closeElement);
-        elementMethods.clickJSElement(closeElement);
+        elementMethod.clickJSElement(closeElement);
 
     }
 }

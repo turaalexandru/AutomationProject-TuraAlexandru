@@ -3,31 +3,19 @@ package tests;
 import helperMethods.AlertMethod;
 import helperMethods.ElementMethod;
 import helperMethods.PageMethods;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.AlertPage;
 import pages.AlertWindowsPage;
 import pages.HomePage;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class AlertTest {
+public class AlertTest extends SharedData {
 
-    public WebDriver driver;
 
     @Test
     public void AlertTest() {
-
-        //Deschidem un browser
-        driver = new ChromeDriver();
-
-        //deschidem un anumit URL
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in mod maximize
-
-        driver.manage().window().maximize();
 
         //definim un obiect de tip alert methods ca sa apelam metodele din clasa
         AlertMethod alertMethod = new AlertMethod(driver);

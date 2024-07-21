@@ -1,25 +1,15 @@
 package pages;
 
-import helperMethods.ElementMethod;
-import helperMethods.PageMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class WebTablePage {
+public class WebTablePage extends BasePage {
 
-    public WebDriver driver;
-    public ElementMethod elementMethod;
-    public PageMethods pageMethods;
-
-    public WebTablePage (WebDriver driver) {
-        this.driver = driver;
-        elementMethod = new ElementMethod(driver);
-        pageMethods = new PageMethods(driver);
-        PageFactory.initElements(driver, this);
+    public WebTablePage(WebDriver driver) {
+        super(driver);
     }
+
     @FindBy(id = "addNewRecordButton")
     public WebElement addElement;
 
@@ -55,6 +45,8 @@ public class WebTablePage {
 
     @FindBy(id = "delete-record-4")
     public WebElement deleteElement;
+
+
 
     public void addEntry (String firstNameValue, String lastNameValue, String emailValue, String ageValue,
                           String salaryValue, String departmentValue) {

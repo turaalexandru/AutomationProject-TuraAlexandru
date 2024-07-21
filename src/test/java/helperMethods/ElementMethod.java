@@ -21,12 +21,12 @@ public class ElementMethod {
     //metode generale pentru interactiunea cu elemente
 
 
-//adaugam un element pentru a astepta pana la 10 secunde
-    public void waitForElementVisible (WebElement element) {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //asteapta maxim 10 secunde
+    //adaugam un element pentru a astepta pana la 10 secunde
+    public void waitForElementVisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Increase wait time to 20 seconds
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
 
     //adaugam un element pentru a da click
     public void clickElement(WebElement element) {
@@ -35,18 +35,18 @@ public class ElementMethod {
         element.click();
     }
 
-    public void fillElement(WebElement element, String text){
+    public void fillElement(WebElement element, String text) {
         waitForElementVisible(element);
         element.sendKeys(text);
     }
 
-    public void clearFillElement(WebElement element, String text){
+    public void clearFillElement(WebElement element, String text) {
         waitForElementVisible(element);
         element.clear();
         element.sendKeys(text);
     }
 
-    public void pressElement (WebElement element, Keys key){
+    public void pressElement(WebElement element, Keys key) {
         waitForElementVisible(element);
         element.sendKeys(key);
     }
@@ -58,19 +58,19 @@ public class ElementMethod {
         jsClick.executeScript("arguments[0].click();", element);
     }
 
-public void selectByTextElement (WebElement element, String text) {
-    waitForElementVisible(element);
-    Select monthSelect = new Select(element);
-    monthSelect.selectByVisibleText(text);
-}
-
-    public void selectByValue (WebElement element, String text) {
+    public void selectByTextElement(WebElement element, String text) {
         waitForElementVisible(element);
         Select monthSelect = new Select(element);
         monthSelect.selectByVisibleText(text);
     }
 
-    public void clearFill (WebElement element, String text) {
+    public void selectByValue(WebElement element, String text) {
+        waitForElementVisible(element);
+        Select monthSelect = new Select(element);
+        monthSelect.selectByVisibleText(text);
+    }
+
+    public void clearFill(WebElement element, String text) {
         waitForElementVisible(element);
         element.clear();
         element.sendKeys(text);

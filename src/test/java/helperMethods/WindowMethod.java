@@ -16,9 +16,12 @@ public class WindowMethod {
     //metode generale pentru interactiunea cu tab/window
 
     public void switchSpecificTab (Integer index) {
-
-        List<String> window = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(window.get(index));//interactionam cu un tab/window - ne va arata url-ul paginii
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        if (index >= 0 && index < tabs.size()) {
+            driver.switchTo().window(tabs.get(index));
+        } else {
+        throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + tabs.size());
+    }
 
     }
 

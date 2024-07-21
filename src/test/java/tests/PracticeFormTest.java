@@ -1,46 +1,27 @@
 package tests;
 
-import helperMethods.ElementMethod;
 import helperMethods.PageMethods;
-import helperMethods.WindowMethod;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.FormsPage;
 import pages.HomePage;
 import pages.PracticeFormPage;
+import sharedData.SharedData;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeFormTest {
+public class PracticeFormTest extends SharedData {
 
     public WebDriver driver;
 
     @Test
-    public void metodaTest() {
+    public void metodaTest () {
 
-        //Deschidem un browser
-        driver = new ChromeDriver();
-
-        //deschidem un anumit URL
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in mod maximize
-
-        driver.manage().window().maximize();
-
-        //definim un obiect de tipul page method
-
-        PageMethods pageMethods = new PageMethods(driver);
-
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.navigateToFormMenu();
 
-        //interactionam cu meniul/submeniul
-        FormsPage formsPage = new FormsPage(driver);
+        FormsPage formsPage = new FormsPage(getDriver());
         formsPage.navigateToPracticeForm();
 
         String firstNameValue = "Dania";
@@ -56,7 +37,7 @@ public class PracticeFormTest {
         String cityInputValue = "Agra";
         List<String> hobbiesValues = Arrays.asList("Sports", "Music");
 
-        PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
+        PracticeFormPage practiceFormPage = new PracticeFormPage(getDriver());
         practiceFormPage.fillEntireForm(firstNameValue, lastNameValue, emailNameValue, genderValue, mobileNumberValue, daysOfBirthValue,
                 subjectInputValue, picturePathValue, addressElementValue, stateInputValue, cityInputValue, hobbiesValues);
 

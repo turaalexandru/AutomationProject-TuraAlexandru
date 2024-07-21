@@ -8,18 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlertPage {
-    public WebDriver driver;
-    public ElementMethod elementMethod;
-    public PageMethods pageMethods;
-    public AlertMethod alertMethod;
+public class AlertPage extends BasePage{
 
     public AlertPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethod = new ElementMethod(driver);
-        pageMethods = new PageMethods(driver);
-        alertMethod = new AlertMethod(driver);
-        PageFactory.initElements(driver, this);
+        super (driver);
     }
 
     @FindBy(id = "alertButton")

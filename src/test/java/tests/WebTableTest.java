@@ -4,31 +4,18 @@ package tests;
 import helperMethods.ElementMethod;
 import helperMethods.PageMethods;
 import helperMethods.WindowMethod;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.ElementsPage;
 import pages.HomePage;
 import pages.WebTablePage;
+import sharedData.SharedData;
 
-public class WebTableTest {
+public class WebTableTest extends SharedData {
 
-    public WebDriver driver;
 
     @Test
     public void metodaTest() {
 
-        //Deschidem un browser
-        driver = new ChromeDriver();
-
-        //deschidem un anumit URL
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in mod maximize
-
-        driver.manage().window().maximize();
 
         //definim un obiect de tipul window method
         WindowMethod windowMethod = new WindowMethod(driver);

@@ -7,17 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+public class HomePage extends BasePage {
 
-    public WebDriver driver;
-    public ElementMethod elementMethod;
-    public PageMethods pageMethods;
-
-    public HomePage (WebDriver driver) {
-        this.driver = driver;
-        elementMethod = new ElementMethod(driver);
-        pageMethods = new PageMethods(driver);
-        PageFactory.initElements(driver, this);
+    public HomePage(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//h5[text()='Alerts, Frame & Windows']")

@@ -7,18 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlertWindowsPage {
+public class AlertWindowsPage extends BasePage {
 
-        public WebDriver driver;
-        public ElementMethod elementMethod;
-        public PageMethods pageMethods;
-
-        public AlertWindowsPage(WebDriver driver) {
-            this.driver = driver;
-            elementMethod = new ElementMethod(driver);
-            pageMethods = new PageMethods(driver);
-            PageFactory.initElements(driver, this);
-        }
+    public AlertWindowsPage(WebDriver driver) {
+        super(driver);
+    }
 
     @FindBy(xpath = "//span[text()='Browser Windows']")
     public WebElement browsersoptionMeniu;
@@ -28,6 +21,7 @@ public class AlertWindowsPage {
 
     @FindBy (xpath = "//span[text()='Alerts']")
     public WebElement alertsoptionMeniu;
+
 
 
 
