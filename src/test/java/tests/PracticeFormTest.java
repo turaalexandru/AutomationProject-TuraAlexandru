@@ -44,7 +44,7 @@ public class PracticeFormTest extends SharedData {
         practiceFormPage.validateEntireForm(firstNameValue, lastNameValue, emailNameValue, genderValue, mobileNumberValue,
                 subjectInputValue, hobbiesValues, picturePathValue, addressElementValue, stateInputValue, cityInputValue);
 
-        // validam tabelul cu valorile introduse
+
 
     }
 

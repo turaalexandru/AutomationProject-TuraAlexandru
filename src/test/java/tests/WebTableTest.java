@@ -17,12 +17,11 @@ public class WebTableTest extends SharedData {
     public void metodaTest() {
 
 
-        //definim un obiect de tipul window method
-        WindowMethod windowMethod = new WindowMethod(driver);
+
         //definim un obiect de tipul element method
-        ElementMethod elementMethod = new ElementMethod(driver);
+        ElementMethod elementMethod = new ElementMethod(getDriver());
         //definim un obiect de tipul page method
-        PageMethods pageMethods = new PageMethods(driver);
+        PageMethods pageMethods = new PageMethods(getDriver());
 
         //facem un scroll la pagina pentru vizibilitate
         //JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -30,15 +29,15 @@ public class WebTableTest extends SharedData {
         pageMethods.scrollPage(0, 350);
 
         //interactionam cu meniul/submeniul
-        HomePage homePage1 = new HomePage(driver);
+        HomePage homePage1 = new HomePage(getDriver());
         homePage1.navigateToElementsMenu();
 
-        ElementsPage elementsPage = new ElementsPage(driver);
+        ElementsPage elementsPage = new ElementsPage(getDriver());
         elementsPage.navigateToWebtableMeniu();
 
         //definim un element dupa id
         //test 1: adaug un entry
-        WebTablePage webTablePage = new WebTablePage(driver);
+        WebTablePage webTablePage = new WebTablePage(getDriver());
         webTablePage.addEntry("Alex", "Alejandros", "exemple@exemple.com", "30",
                 "300000", "ShaormaTester");
 

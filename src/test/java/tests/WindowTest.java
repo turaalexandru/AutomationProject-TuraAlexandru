@@ -15,23 +15,23 @@ public class WindowTest extends SharedData {
 
         //definim un obiect de tipul homepage
 
-        HomePage hopePage = new HomePage(driver);
+        HomePage hopePage = new HomePage(getDriver());
         hopePage.navigateToAlertMenu();
 
         //definim un obiect de tipul aletwindow
 
-        AlertWindowsPage alertWindows = new AlertWindowsPage(driver);
+        AlertWindowsPage alertWindows = new AlertWindowsPage(getDriver());
         alertWindows.navigateToWindowPage();
 
 
         //interactionam cu un newtabButton
-        WindowPages windowPages = new WindowPages(driver);
+        WindowPages windowPages = new WindowPages(getDriver());
         windowPages.interactWithNewTabButton();
         //interactionam cu un newwindowButton
         windowPages.interactWithNewWindowButton();
 
         //inchidem browserul
-        driver.quit();
+        //getDriver().quit();
 
     }
 }

@@ -11,7 +11,7 @@ import pages.HomePage;
 import pages.NestedFramePage;
 import sharedData.SharedData;
 
-public class runFrameTest extends SharedData {
+public class FrameTest extends SharedData {
 
 
     @Test
@@ -20,27 +20,23 @@ public class runFrameTest extends SharedData {
 
 
         //definim un obiect de tip alert methods ca sa apelam metodele din clasa
-        AlertMethod alertMethod = new AlertMethod(driver);
 
-
-        //definim un obiect de tip alert methods ca sa apelam metodele din clasa
-        ElementMethod elementMethod = new ElementMethod(driver);
-        PageMethods pageMethods = new PageMethods(driver);
-        FrameMethod frameMethod = new FrameMethod(driver);
-        HomePage homePage = new HomePage(driver);
+        PageMethods pageMethods = new PageMethods(getDriver());
+        HomePage homePage = new HomePage(getDriver());
         homePage.navigateToAlertMenu();
+        pageMethods.scrollPage(0, 350);
 
-        AlertWindowsPage alertWindowsPage = new AlertWindowsPage(driver);
+        AlertWindowsPage alertWindowsPage = new AlertWindowsPage(getDriver());
         alertWindowsPage.navigateToFrameOptionMeniu();
 
         //ne mutam cu focusul pe un iframte
-        FramePage framePage = new FramePage(driver);
+        FramePage framePage = new FramePage(getDriver());
         framePage.interactWithBigIFrame();
         framePage.interactWithSmallIFrame();
         framePage.interactWithNestedOptionMeniu();
 
         //interactionam cu iframe in iframe
-        NestedFramePage nestedFramePage = new NestedFramePage(driver);
+        NestedFramePage nestedFramePage = new NestedFramePage(getDriver());
         nestedFramePage.interactWithChildFrame();
 
     }

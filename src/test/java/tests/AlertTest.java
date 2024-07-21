@@ -18,10 +18,7 @@ public class AlertTest extends SharedData {
     public void AlertTest() {
 
         //definim un obiect de tip alert methods ca sa apelam metodele din clasa
-        AlertMethod alertMethod = new AlertMethod(driver);
-        ElementMethod elementMethod = new ElementMethod(driver);
-        PageMethods pageMethods = new PageMethods(driver);
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         AlertWindowsPage  alertWindowsPage = new AlertWindowsPage(driver);
 
 
@@ -37,7 +34,7 @@ public class AlertTest extends SharedData {
 
         //interactionam cu un alertButton
 
-        AlertPage alertPage = new AlertPage(driver);
+        AlertPage alertPage = new AlertPage(getDriver());
         alertPage.interactclickButton();
         alertPage.interactclickButton();
 
@@ -74,7 +71,7 @@ public class AlertTest extends SharedData {
         //alertwaitButton.dismiss();
 
         // Închidem driver-ul
-        driver.quit();
+        //getDriver().quit();
 
     }
 }
